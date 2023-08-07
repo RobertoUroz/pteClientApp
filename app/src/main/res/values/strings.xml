@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">clientAppIntegrationTest</string>
+    <string name="employee_hint">Client\'s Employee 1</string>
+    <string name="citizen_name_label">Citizen\'s name</string>
+    <string name="accept_radio">I do accept</string>
+    <string name="decline_radio">I do not accept</string>
+    <string name="provide_signatures">Provide signatures</string>
+    <string name="start_button">Start Intent</string>
+</resources>

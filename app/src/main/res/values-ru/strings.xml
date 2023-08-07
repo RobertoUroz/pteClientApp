@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Интеграционное тестирование клиентского приложения</string>
+    <string name="employee_hint">Сотрудник клиента 1</string>
+    <string name="citizen_name_label">Имя гражданина</string>
+    <string name="accept_radio">Я согласен</string>
+    <string name="decline_radio">Я не согласен</string>
+    <string name="provide_signatures">Предоставить подписи</string>
+    <string name="start_button">Запустить намерение</string>
+</resources>

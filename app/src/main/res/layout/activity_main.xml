@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clientAppIntegrationTest"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
+
+    <!-- Employee Input -->
+    <EditText
+        android:id="@+id/employeeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Client's Employee 1"
+        android:text="Client's Employee 1"
+        android:layout_below="@id/titleTextView"
+        android:padding="16dp"/>
+
+    <!-- Citizen Name Input -->
+    <TextView
+        android:id="@+id/citizenNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Citizen's name"
+        android:layout_below="@id/employeeInput"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+
+    <EditText
+        android:id="@+id/citizenNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/employeeInput"
+        android:layout_toEndOf="@id/titleTextView"
+        android:padding="16dp"/>
+
+    <!-- Radio Buttons -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/citizenNameInput"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <RadioButton
+            android:id="@+id/acceptRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I do accept"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/declineRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I do not accept"
+            android:layout_weight="1"/>
+    </RadioGroup>
+
+    <!-- Checkmark -->
+    <CheckBox
+        android:id="@+id/signatureCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Provide signatures"
+        android:layout_below="@id/radioGroup"
+        android:padding="16dp"/>
+
+    <!-- Button -->
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Intent"
+        android:layout_below="@id/signatureCheck"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
+
+</RelativeLayout>

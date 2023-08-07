@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="employeeInput" type="id" />
+    <item name="titleTextView" type="id" />
+    <item name="citizenNameInput" type="id" />
+    <item name="radioGroup" type="id" />
+    <item name="declineRadio" type="id" />
+    <item name="acceptRadio" type="id" />
+    <item name="signatureCheck" type="id" />
+</resources>

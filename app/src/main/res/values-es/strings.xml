@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Prueba de Integración de la Aplicación del Cliente</string>
+    <string name="employee_hint">Empleado del Cliente 1</string>
+    <string name="citizen_name_label">Nombre del Ciudadano</string>
+    <string name="accept_radio">Acepto</string>
+    <string name="decline_radio">No acepto</string>
+    <string name="provide_signatures">Proporcionar firmas</string>
+    <string name="start_button">Iniciar Intento</string>
+</resources>
