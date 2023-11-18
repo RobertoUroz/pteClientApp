@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <!-- Title -->
     <TextView
@@ -78,13 +76,24 @@
         android:layout_below="@id/radioGroup"
         android:padding="16dp"/>
 
-    <!-- Button -->
+    <!-- Button for Camera Capture -->
+    <Button
+        android:id="@+id/capturePhotoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capture Photo"
+        android:layout_below="@id/signatureCheck"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
+
+    <!-- Original Button -->
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Intent"
-        android:layout_below="@id/signatureCheck"
+        android:layout_below="@id/capturePhotoButton"
         android:layout_centerHorizontal="true"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"/>

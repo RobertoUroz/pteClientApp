@@ -1,97 +1,71 @@
 package com.pte.clientapptestintegration
 
-import android.content.ComponentName
-import java.util.Locale
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
-import com.google.gson.JsonObject
-import java.io.IOException
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
+import com.pte.clientapptestintegration.R
+import com.pte.clientapptestintegration.fragments.FragmentExample1
+import com.pte.clientapptestintegration.fragments.FragmentExample2
+import com.pte.clientapptestintegration.fragments.FragmentExample3
 
 class MainActivity : AppCompatActivity() {
 
-    private val htmlFileName = "sample.html"
+    private lateinit var drawer: DrawerLayout
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main_activity)
 
-        setLocalizedTexts()
+        // Initialize your DrawerLayout and ActionBarDrawerToggle
+        drawer = findViewById(R.id.drawer_layout)
+        toggle = ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_close)
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
 
-        val startButton = findViewById<View>(R.id.startButton)
-        startButton.setOnClickListener {
-            val htmlObject = readHtmlSample()
-            if (htmlObject != "") {
-                val jsonObject = getAllJsonValues()
+        // Enable the Up button for navigation
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-                val intent = Intent()
-                intent.component = ComponentName("org.oraclejet.multilingualInvoiceGenerator", "org.oraclejet.multilingualInvoiceGenerator.MainActivity")
-                intent.putExtra("html_object", htmlObject)
-                intent.putExtra("json_object", jsonObject.toString())
-
-                startActivity(intent)
+        // Set up the navigation view
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            // Handle navigation view item clicks here
+            when (menuItem.itemId) {
+                R.id.fragmentExample1 -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentExample1()).commit()
+                }
+                R.id.fragmentExample2 -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentExample2()).commit()
+                }
+                R.id.fragmentExample3 -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentExample3()).commit()
+                }
             }
+            // Close the drawer after selecting an item
+            drawer.closeDrawer(GravityCompat.START)
+            true
         }
+
+        // Set the initial fragment
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentExample1()).commit()
     }
 
-    private fun readHtmlSample(): String {
-        val assetManager = resources.assets
+    // Handle navigation drawer toggle events
+    /*override fun onSupportNavigateUp(): Boolean {
+        return if (toggle.onOptionsItemSelected()) {
+            true
+        } else super.onSupportNavigateUp()
+    }*/
 
-        try {
-            val inputStream = assetManager.open(htmlFileName)
-            val htmlContent = inputStream.bufferedReader().use { it.readText() }
-            return htmlContent
-
-        } catch (e: IOException) {
+    // Handle back button press to close the navigation drawer if it's open
+    override fun onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
         }
-        return ""
-    }
-
-    private fun getAllJsonValues(): String {
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("", "")
-        return jsonObject.toString()
-    }
-
-    private fun setLocalizedTexts() {
-        val locale = Locale.getDefault()
-
-        val configuration = resources.configuration
-        configuration.setLocale(locale)
-
-        val context = createConfigurationContext(configuration)
-
-        // Get localized strings using the context with the updated locale
-        val employeeHint = context.getString(R.string.employee_hint)
-        val citizenNameLabel = context.getString(R.string.citizen_name_label)
-        val acceptText = context.getString(R.string.accept_radio)
-        val declineText = context.getString(R.string.decline_radio)
-        val provideSignaturesText = context.getString(R.string.provide_signatures)
-        val startButtonText = context.getString(R.string.start_button)
-
-        val employeeInput = findViewById<EditText>(R.id.employeeInput)
-        employeeInput.hint = employeeHint
-
-        val citizenNameLabelView = findViewById<TextView>(R.id.citizenNameLabel)
-        citizenNameLabelView.text = citizenNameLabel
-
-        val acceptRadio = findViewById<RadioButton>(R.id.acceptRadio)
-        acceptRadio.text = acceptText
-
-        val declineRadio = findViewById<RadioButton>(R.id.declineRadio)
-        declineRadio.text = declineText
-
-        val provideSignaturesCheck = findViewById<CheckBox>(R.id.signatureCheck)
-        provideSignaturesCheck.text = provideSignaturesText
-
-        val startButton = findViewById<Button>(R.id.startButton)
-        startButton.text = startButtonText
     }
 }

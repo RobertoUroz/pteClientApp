@@ -1,0 +1,12 @@
+<!-- drawer_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentExample1"
+        android:title="Example 1" />
+    <item
+        android:id="@+id/fragmentExample2"
+        android:title="Example 2" />
+    <item
+        android:id="@+id/fragmentExample3"
+        android:title="Example 3" />
+</menu>

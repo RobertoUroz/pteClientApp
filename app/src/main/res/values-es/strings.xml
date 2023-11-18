@@ -6,4 +6,11 @@
     <string name="decline_radio">No acepto</string>
     <string name="provide_signatures">Proporcionar firmas</string>
     <string name="start_button">Iniciar Intento</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+    <string-array name="drawer_items">
+        <item>Fragment Example 1</item>
+        <item>Fragment Example 2</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>
