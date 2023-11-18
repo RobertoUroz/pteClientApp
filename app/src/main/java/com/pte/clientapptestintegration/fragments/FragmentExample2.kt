@@ -38,7 +38,7 @@ import java.util.Locale
 
 class FragmentExample2 : Fragment() {
 
-    private val htmlFileName = "sample.html"
+    private val htmlFileName = "sample2.html"
     private val CAMERA_REQUEST = 1888
     private val PERMISSIONS_REQUEST = 123
     private val attachments = ArrayList<String>()
@@ -48,7 +48,7 @@ class FragmentExample2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_example_1, container, false)
+        return inflater.inflate(R.layout.fragment_example_2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -199,54 +199,29 @@ class FragmentExample2 : Fragment() {
         [
           {
             id: citizenSignature1,
-            name: "Citizen 1",
             data: ""
           },
           {
-            id: organizationEmployee1,
-            name: "Organization's Employee",
+            id: employeeSignature1,
             data: ""
           }
         ]
     """.trimIndent()
 
+        val citizenName = view?.findViewById<EditText>(R.id.citizenNameInput)?.text.toString()
+        val employeeName = view?.findViewById<EditText>(R.id.employeeNameInput)?.text.toString()
+
         val jsonArray = JSONArray(jsonData);
+        jsonArray.getJSONObject(0).put("name", citizenName)
+        jsonArray.getJSONObject(1).put("name", employeeName)
         return jsonArray.toString();
     }
 
     private fun getRows(): String {
         val jsonData = """
             {
-        "table1_static": {
-          "VM": {
-            "0": undefined,
-            "2": undefined,
-            "4": undefined,
-            "8": undefined,
-            "12": undefined,
-            "15": undefined,
-            "27": undefined,
-            "40": undefined,
-            "57": undefined,
-            "59": undefined,
-            "66": undefined,
-            "76": undefined,
-            "87": undefined
-          },
-          "Assortment_Standard": {
-            "0": undefined,
-            "1": undefined,
-            "4": undefined,
-            "8": undefined,
-            "20": undefined,
-            "27": undefined,
-            "40": undefined,
-            "57": undefined,
-            "59": undefined,
-            "66": undefined
-          }
-        }
-      }
+            
+            }
         """.trimIndent()
 
         val jsonObject = JSONObject(jsonData);
@@ -256,42 +231,28 @@ class FragmentExample2 : Fragment() {
     private fun getForms(): String {
         val jsonData = """
             {
-        orderNumber: 1234,
-        contactPerson: "yourlogohere@yourlogohere.com",
-        telePhoneNo: "123456789",
-        fax: "987654321",
-        email: "yourlogohere@yourlogohere.com",
-        IdVATRate: 23,
-        accountName: "Client example",
-        addressLine1: "Via Santa Radegonda, 14",
-        zipcode: "20122",
-        city: "Milano",
-        province: "Milano",
-        country: "Italy",
-        "Vs. Codice Fornitore": 1234,
-        quantity: 1,
-        price: "100.0",
-        totalOrder: "100.0",
-        IdVATRate: 23,
-        IdInvoice: "Test1234",
-        IdStreetShipping: "Crestcliff Ltd Londis 14/15 Lower O'Connell Street Dublin 1 Ireland",
-        IdShp: "0099887",
-        IdBilling: "BWG Foods Central Billing BWG House Greenhills Road Tallaght Dublin 24",
-        IdBillingNumber: "1234",
-        IdBill: "111222333444",
-        IdJTIWarehouse: "IE01  JTI Ireland, Dublin",
-        IdDeliveryNotesNumber: "TestIdDeliveryNotes1234",
-        IdSalesOrder: "TestId1",
-        IdPONumber: "of 29/09/2020"
-      }
+  "AuthorityName": "Власть города Ситивил",
+  "Country": "Испания",
+  "AddressLine1": "456 Центральная улица",
+  "AddressLine2": "Офис 789",
+  "CityStateZipCode": "Город Ситивил, CV12345",
+  "PhoneNumber": "+1 (555) 123-4567",
+  "EmailAddress": "john.doe@example.com",
+  "WebsiteURL": "https://cityvilleauthority.example"
+}
         """.trimIndent()
 
-        val jsonObject = JSONObject(jsonData);
-        return jsonObject.toString();
-    }
+        val citizenName = view?.findViewById<EditText>(R.id.citizenNameInput)?.text.toString()
+        val employeeName = view?.findViewById<EditText>(R.id.employeeNameInput)?.text.toString()
+        val citizenAddress = view?.findViewById<EditText>(R.id.citizenAddressInput)?.text.toString()
 
-    private fun getHtmlFile(): String {
-        return readHtmlSample();
+        val jsonObject = JSONObject(jsonData)
+        jsonObject.put("Date", Date().toString())
+        jsonObject.put("FullName", citizenName)
+        jsonObject.put("EmployeeFullName", employeeName)
+        jsonObject.put("Address", citizenAddress)
+
+        return jsonObject.toString();
     }
 
     private fun setLocalizedTexts() {

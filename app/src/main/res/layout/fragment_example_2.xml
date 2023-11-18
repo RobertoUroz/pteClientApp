@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Example 2"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/citizenNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleTextView"
+        android:layout_marginTop="28dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Citizen's name" />
+
+    <EditText
+        android:id="@+id/citizenNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleTextView"
+        android:layout_marginTop="46dp"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/citizenAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/citizenNameInput"
+        android:layout_marginTop="28dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Citizen's address" />
+
+    <EditText
+        android:id="@+id/citizenAddressInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/citizenNameInput"
+        android:layout_marginTop="46dp"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/employeeNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/citizenAddressInput"
+        android:layout_marginTop="28dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Employee's name" />
+
+    <EditText
+        android:id="@+id/employeeNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/employeeNameLabel"
+        android:padding="16dp" />
+
+    <!-- Button for Camera Capture -->
+    <Button
+        android:id="@+id/capturePhotoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capture Photo"
+        android:layout_below="@id/employeeNameInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/capturePhotoButton"
+        android:paddingBottom="16dp"
+        android:text="Start Intent"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>
