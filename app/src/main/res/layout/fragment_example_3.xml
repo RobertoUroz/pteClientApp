@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:text="Example 2"
+            android:text="Example 3"
             android:textSize="20sp" />
 
         <TextView
@@ -73,30 +73,30 @@
             android:layout_below="@+id/employeeNameLabel"
             android:padding="16dp" />
 
-        <CheckBox
-            android:id="@+id/checkbox1"
-            android:layout_width="wrap_content"
+        <!-- Encapsulated ConstraintLayout for RecyclerView -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/employeeNameInput"
-            android:layout_marginTop="20dp"
-            android:tag="0"
-            android:text="принимаю условия конфиденциальности данных" />
+            android:layout_below="@id/employeeNameInput"
+            android:id="@+id/constraintLayout"
+            android:padding="16dp">
 
-        <CheckBox
-            android:id="@+id/checkbox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkbox1"
-            android:layout_marginTop="20dp"
-            android:tag="89"
-            android:text="принимаю соблюдение безопасности со стороны властей" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/multiselectList"
+                android:layout_width="409dp"
+                android:layout_height="100dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <!-- Button for Camera Capture -->
         <Button
             android:id="@+id/capturePhotoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/checkbox2"
+            android:layout_below="@id/editTextNumber"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:paddingTop="16dp"
@@ -111,6 +111,24 @@
             android:layout_centerHorizontal="true"
             android:paddingBottom="16dp"
             android:text="Start Intent" />
+
+        <TextView
+            android:id="@+id/dynamicRowsNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/constraintLayout"
+            android:layout_marginTop="28dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="How many dynamic rows?" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dynamicRowsNumberLabel"
+            android:ems="2"
+            android:inputType="number" />
 
     </RelativeLayout>
 

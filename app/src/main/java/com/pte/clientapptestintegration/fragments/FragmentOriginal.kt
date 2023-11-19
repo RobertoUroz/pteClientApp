@@ -33,13 +33,12 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
 
 class FragmentOriginal : Fragment() {
 
-    private val htmlFileName = "sample1.html"
+    private val htmlFileName = "sample.html"
     private val CAMERA_REQUEST = 1888
     private val PERMISSIONS_REQUEST = 123
     private val attachments = ArrayList<String>()
@@ -200,18 +199,54 @@ class FragmentOriginal : Fragment() {
         [
           {
             id: citizenSignature1,
+            name: "Citizen 1",
+            data: ""
+          },
+          {
+            id: organizationEmployee1,
+            name: "Organization's Employee",
             data: ""
           }
         ]
     """.trimIndent()
 
         val jsonArray = JSONArray(jsonData);
-        //jsonArray.getJSONObject(0).put("name", citi)
         return jsonArray.toString();
     }
 
     private fun getRows(): String {
         val jsonData = """
+            {
+        "table1_static": {
+          "VM": {
+            "0": undefined,
+            "2": undefined,
+            "4": undefined,
+            "8": undefined,
+            "12": undefined,
+            "15": undefined,
+            "27": undefined,
+            "40": undefined,
+            "57": undefined,
+            "59": undefined,
+            "66": undefined,
+            "76": undefined,
+            "87": undefined
+          },
+          "Assortment_Standard": {
+            "0": undefined,
+            "1": undefined,
+            "4": undefined,
+            "8": undefined,
+            "20": undefined,
+            "27": undefined,
+            "40": undefined,
+            "57": undefined,
+            "59": undefined,
+            "66": undefined
+          }
+        }
+      }
         """.trimIndent()
 
         val jsonObject = JSONObject(jsonData);
@@ -221,28 +256,47 @@ class FragmentOriginal : Fragment() {
     private fun getForms(): String {
         val jsonData = """
             {
-        "AuthorityName": "Cityville Municipal Authority",
-        "Country": "Spain",
-        "AddressLine1": "456 Central Avenue",
-        "AddressLine2": "Suite 789",
-        "CityStateZipCode": "Cityville, CV12345",
-        "PhoneNumber": "+1 (555) 123-4567",
-        "EmailAddress": "john.doe@example.com",
-        "WebsiteURL": "https://cityvilleauthority.example"
+        orderNumber: 1234,
+        contactPerson: "yourlogohere@yourlogohere.com",
+        telePhoneNo: "123456789",
+        fax: "987654321",
+        email: "yourlogohere@yourlogohere.com",
+        IdVATRate: 23,
+        accountName: "Client example",
+        addressLine1: "Via Santa Radegonda, 14",
+        zipcode: "20122",
+        city: "Milano",
+        province: "Milano",
+        country: "Italy",
+        "Vs. Codice Fornitore": 1234,
+        quantity: 1,
+        price: "100.0",
+        totalOrder: "100.0",
+        IdVATRate: 23,
+        IdInvoice: "Test1234",
+        IdStreetShipping: "Crestcliff Ltd Londis 14/15 Lower O'Connell Street Dublin 1 Ireland",
+        IdShp: "0099887",
+        IdBilling: "BWG Foods Central Billing BWG House Greenhills Road Tallaght Dublin 24",
+        IdBillingNumber: "1234",
+        IdBill: "111222333444",
+        IdJTIWarehouse: "IE01  JTI Ireland, Dublin",
+        IdDeliveryNotesNumber: "TestIdDeliveryNotes1234",
+        IdSalesOrder: "TestId1",
+        IdPONumber: "of 29/09/2020"
       }
         """.trimIndent()
 
-        //val citizenName = view?.findViewById<EditText>(R.id.citizenNameInput)
-        //val citizenAddress = view?.findViewById<EditText>(R.id.citizenAddressInput)
-
-        val jsonObject = JSONObject(jsonData)
-        jsonObject.put("Date", Date().toString())
-
+        val jsonObject = JSONObject(jsonData);
         return jsonObject.toString();
     }
 
+    private fun getHtmlFile(): String {
+        return readHtmlSample();
+    }
+
     private fun setLocalizedTexts() {
-        val employeeHint = getString(R.string.employee_hint)
+        //val employeeHint = getString(R.string.employee_hint)
+        val employeeHint = "BBBBB"
         val citizenNameLabel = getString(R.string.citizen_name_label)
         val acceptText = getString(R.string.accept_radio)
         val declineText = getString(R.string.decline_radio)

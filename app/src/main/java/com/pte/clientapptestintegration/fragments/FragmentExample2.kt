@@ -220,11 +220,23 @@ class FragmentExample2 : Fragment() {
     private fun getRows(): String {
         val jsonData = """
             {
-            
+            "table1_static": {
+              "verification": []
+              }
             }
         """.trimIndent()
 
-        val jsonObject = JSONObject(jsonData);
+        val jsonObject = JSONObject(jsonData)
+        val table1_static_values = jsonObject.getJSONObject("table1_static").getJSONArray("verification")
+        val checkbox1 = view?.findViewById<CheckBox>(R.id.checkbox1)
+        val checkbox2 = view?.findViewById<CheckBox>(R.id.checkbox2)
+        if (true == checkbox1?.isChecked) {
+            table1_static_values.put(checkbox1.tag)
+        }
+        if (true == checkbox2?.isChecked) {
+            table1_static_values.put(checkbox2.tag)
+        }
+
         return jsonObject.toString();
     }
 
@@ -257,7 +269,7 @@ class FragmentExample2 : Fragment() {
 
     private fun setLocalizedTexts() {
         //val employeeHint = getString(R.string.employee_hint)
-        val employeeHint = "AAAA"
+        val employeeHint = getString(R.string.employee_hint)
         val citizenNameLabel = getString(R.string.citizen_name_label)
         val acceptText = getString(R.string.accept_radio)
         val declineText = getString(R.string.decline_radio)
