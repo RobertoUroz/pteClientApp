@@ -349,16 +349,18 @@ class FragmentExample3 : Fragment() {
         }
         val numberOfRows = view?.findViewById<EditText>(R.id.editTextNumber)
         val dynamicTable1 = jsonObject.getJSONObject("table1_dynamic")
-        for (i in 1..Integer.valueOf(numberOfRows?.text.toString())) {
-            val row = JSONObject()
-            row.put("Immagine", images[generateRandomNumber(0, images.size-1)])
-            row.put("Codice_Marca", generateRandomString(8))
-            row.put("SAPSKU_No", generateRandomNumber(100000, 999999).toString())
-            row.put("Descrizione", "Product ${generateRandomString(5)}")
-            row.put("Quantità_Spedizione", generateRandomNumber(1, 100))
-            row.put("Prezzo_Unitario_per_1000/KG", generateRandomDouble(10.0, 100.0))
-            row.put("Importo_EUR", generateRandomDouble(100.0, 1000.0))
-            dynamicTable1.put("" + i, row)
+        if (numberOfRows?.text.toString().toIntOrNull() != null) {
+            for (i in 1..Integer.valueOf(numberOfRows?.text.toString())) {
+                val row = JSONObject()
+                row.put("Immagine", images[generateRandomNumber(0, images.size - 1)])
+                row.put("Codice_Marca", generateRandomString(8))
+                row.put("SAPSKU_No", generateRandomNumber(100000, 999999).toString())
+                row.put("Descrizione", "Product ${generateRandomString(5)}")
+                row.put("Quantità_Spedizione", generateRandomNumber(1, 100))
+                row.put("Prezzo_Unitario_per_1000/KG", generateRandomDouble(10.0, 100.0))
+                row.put("Importo_EUR", generateRandomDouble(100.0, 1000.0))
+                dynamicTable1.put("" + i, row)
+            }
         }
 
         return jsonObject.toString();
